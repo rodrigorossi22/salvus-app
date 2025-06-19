@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/salvus-app/" />
+    <script>
+      // Redireciona para o index.html preservando a rota
+      var l = window.location;
+      var path = l.pathname.replace(/^\/salvus-app/, '');
+      window.location.replace('/salvus-app/?redirect=' + encodeURIComponent(path + l.search + l.hash));
+    </script>
+  </head>
+  <body>
+    <h1>Redirecionando...</h1>
+  </body>
+</html> 
