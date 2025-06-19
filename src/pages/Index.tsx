@@ -9,6 +9,7 @@ const Index = () => {
   const { toast } = useToast();
   const [modalOpen, setModalOpen] = React.useState(false);
   const [showInstruction, setShowInstruction] = React.useState(false);
+  const [waitingForReturn, setWaitingForReturn] = React.useState(false);
 
   const handleFeedback = (folderName: string) => {
     toast({
@@ -19,10 +20,36 @@ const Index = () => {
   };
 
   const handleFotosPacientes = () => {
-    window.open('https://drive.google.com/drive/folders/1ipO7qB481vGt8au61bq7Bk-tte1hbds2?usp=drive_link', '_blank');
     setModalOpen(true);
     setShowInstruction(false);
   };
+
+  const handlePacienteNovo = (novo: boolean) => {
+    if (novo) {
+      setShowInstruction(true);
+    } else {
+      setModalOpen(false);
+      window.open('https://drive.google.com/drive/folders/1ipO7qB481vGt8au61bq7Bk-tte1hbds2?usp=drive_link', '_blank');
+    }
+  };
+
+  const handleFecharInstrucao = () => {
+    setModalOpen(false);
+    window.open('https://drive.google.com/drive/folders/1ipO7qB481vGt8au61bq7Bk-tte1hbds2?usp=drive_link', '_blank');
+  };
+
+  React.useEffect(() => {
+    if (!waitingForReturn) return;
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setModalOpen(true);
+        setShowInstruction(false);
+        setWaitingForReturn(false);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange);
+  }, [waitingForReturn]);
 
   return (
     <div className="min-h-screen bg-salvus-navy flex flex-col items-center justify-center p-6 relative overflow-hidden">
@@ -90,10 +117,10 @@ const Index = () => {
           </DialogHeader>
           {!showInstruction ? (
             <DialogFooter>
-              <Button variant="outline" onClick={() => setModalOpen(false)}>
+              <Button variant="outline" onClick={() => handlePacienteNovo(false)}>
                 Não
               </Button>
-              <Button onClick={() => setShowInstruction(true)}>
+              <Button onClick={() => handlePacienteNovo(true)}>
                 Sim
               </Button>
             </DialogFooter>
@@ -102,7 +129,7 @@ const Index = () => {
               <p className="text-center text-base text-gray-700">
                 Crie uma nova pasta manualmente no Google Drive para o novo paciente.
               </p>
-              <Button onClick={() => setModalOpen(false)}>Fechar</Button>
+              <Button onClick={handleFecharInstrucao}>Abrir Google Drive</Button>
             </div>
           )}
         </DialogContent>
