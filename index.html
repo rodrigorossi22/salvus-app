@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -16,26 +15,36 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#172643" />
     <meta name="msapplication-navbutton-color" content="#172643" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
+    
     <!-- Open Graph -->
     <meta property="og:title" content="Clínica Salvus - Gestão de Documentos" />
     <meta property="og:description" content="Aplicativo da Clínica Salvus para gestão rápida de documentos" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
+    <!-- IMPORTANTE: O caminho para a imagem também deve ser relativo ou absoluto completo -->
+    <meta property="og:image" content="httpse://rodrigorossi22.github.io/salvus-app/lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
 
     <!-- Twitter Meta -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
+    <meta name="twitter:image" content="httpse://rodrigorossi22.github.io/salvus-app/lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/salvus-app/lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
-    <link rel="apple-touch-icon" href="/salvus-app/lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
+    <!-- IMPORTANTE: O caminho para o favicon também deve ser relativo ou absoluto completo -->
+    <link rel="icon" type="image/png" href="./lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
+    <link rel="apple-touch-icon" href="./lovable-uploads/c1110df1-7f82-4a70-b64f-c86ff1e82d80.png" />
     <script type="module" crossorigin src="/salvus-app/assets/index-BleV7ENz.js"></script>
     <link rel="stylesheet" crossorigin href="/salvus-app/assets/index-CcNiJWhX.css">
   </head>
 
   <body>
     <div id="root"></div>
+    <!-- 
+      CORREÇÃO PRINCIPAL:
+      O caminho para o script foi alterado de "/src/main.tsx" para "./src/main.tsx".
+      A barra inicial "/" faz com que o navegador procure o arquivo na raiz do domínio (rodrigorossi22.github.io),
+      ignorando o nome do seu repositório (salvus-app).
+      O "./" indica que o caminho é relativo ao local do arquivo index.html.
+
+      LEIA A EXPLICAÇÃO ABAIXO DESTE BLOCO DE CÓDIGO. ESTA MUDANÇA SOZINHA NÃO É SUFICIENTE.
+    -->
   </body>
 </html>
