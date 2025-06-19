@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "auto:deploy": "git add . && git commit -m \"Atualização automática\" || echo 'Nada para commitar' && git push origin main && npm run build && npm run deploy"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.0",
